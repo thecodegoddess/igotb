@@ -1,0 +1,38 @@
+$_DELAY: 1s;
+
+.c-title {
+	fill: aliceblue;
+
+	&__paths {
+		animation-duration: 3s;
+		animation-name: pulse;
+		animation-iteration-count: 1;
+		transform-origin: center;
+	}
+
+
+}
+
+@keyframes pulse {
+	from {
+		transform: scale3d(.75,.75,.75) rotate(3deg);
+
+	}
+	50% {
+		transform: scale3d(1.05, 1.05, 1.05);
+	}
+
+	to {
+		transform: scale3d(1,1,1)
+	}
+}
+
+$prefix: c-title;
+
+@for $i from 1 through 20 {
+
+	.#{$prefix}__#{$i} {
+		animation-delay: #{$i * 60}ms;
+	}
+
+}

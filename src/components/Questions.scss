@@ -1,0 +1,17 @@
+.c-questions {
+	margin: 2em 3em;
+	&__year {
+		width: 50%;
+		margin: 2em auto;
+	}
+	&__options {
+
+		&--hidden {
+			display: none;
+		}
+	}
+	&__answer {
+		width: 50%;
+		margin: 2em auto;
+	}
+}

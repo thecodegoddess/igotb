@@ -4,11 +4,11 @@ import { string, arrayOf } from 'prop-types';
 const Icon = (props) => {
 
 	const {
-		width = '32px',
-		height = '32px',
+		width = '100%',
+		height = '100%',
 		icon,
 		cssClass = '',
-		viewBox = '0 0 32 32'
+		viewBox
 	} = props;
 
 	return (
@@ -23,7 +23,7 @@ const Icon = (props) => {
 						<path
 							d={ path }
 							key={ idx }
-							className={ `${cssClass}__paths ${cssClass}__${idx}` } />
+							className={ `${cssClass}__paths ${cssClass}__${idx + 1}` } />
 					);
 				})
 			}
@@ -37,7 +37,7 @@ Icon.propTypes = {
 	width : string,
 	height : string,
 	cssClass : string,
-	viewBox : string
+	viewBox : string.isRequired
 };
 
 export default Icon
