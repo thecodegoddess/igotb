@@ -1,13 +1,16 @@
-$_DELAY: 1s;
+@import "../scss/utils";
 
 .c-title {
 	fill: aliceblue;
 
 	&__paths {
+
+	  @include CG_MED {
 		animation-duration: 3s;
 		animation-name: pulse;
 		animation-iteration-count: 1;
 		transform-origin: center;
+	  }
 	}
 
 

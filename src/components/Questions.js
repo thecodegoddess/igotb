@@ -54,30 +54,52 @@ class Questions extends Component {
 
 					</div>
 
-					<label>
-						<input type="radio" name="isIt2019" value="true" checked={isIt2019 === true} onChange={this.handleChange}/>
-						yes
+					<label className="c-questions__opts">
+						<input
+							type="radio"
+							name="isIt2019"
+							value="true"
+							checked={isIt2019 === true}
+							onChange={this.handleChange}
+						/>
+						<Icon icon={ SVGS.YES } viewBox="0 0 81 40" />
 					</label>
-					<label>
+					<label className="c-questions__opts">
 						<input type="radio"
 							name="isIt2019"
 							value="false"
 							checked={isIt2019 === false}
 							onChange={this.handleChange}/>
-						no
+						<Icon icon={ SVGS.NO } viewBox="0 0 81 40" />
 					</label>
 				</div>
 				<div
 					className={ `c-questions__options ${(isIt2019 && isItApril === null) ? '' : 'c-questions__options--hidden'}` }
 				>
-					<div>Is it April?</div>
-					<label>
-						<input type="radio" name="isItApril" value="true" onChange={ this.handleChange } />
-						yes
+					<div className="c-questions__svg">
+						<Icon
+							cssClass="c-questions__year"
+							icon={ SVGS.MONTH }
+							viewBox="0 0 256 34"
+						/>
+					</div>
+					<label className="c-questions__opts">
+						<input
+							type="radio"
+							name="isItApril"
+							value="true"
+							onChange={ this.handleChange }
+						/>
+						<Icon icon={ SVGS.YES } viewBox="0 0 81 40" />
 					</label>
-					<label>
-						<input type="radio" name="isItApril" value="false" onChange={ this.handleChange } />
-						no
+					<label className="c-questions__opts">
+						<input
+							type="radio"
+							name="isItApril"
+							value="false"
+							onChange={ this.handleChange }
+						/>
+						<Icon icon={ SVGS.NO } viewBox="0 0 81 40" />
 					</label>
 				</div>
 				<div className="c-questions__answer">

@@ -1,0 +1,22 @@
+$SMALL_SCREEN: 640px;
+$MED_SCREEN: 768px;
+$LG_SCREEN: 1040px;
+$_DELAY: 1s;
+
+@mixin CG_SM {
+  @media (min-width: #{$SMALL_SCREEN}) {
+	@content;
+  }
+}
+
+@mixin CG_MED {
+  @media (min-width: #{$MED_SCREEN}) {
+	@content;
+  }
+}
+
+@mixin CG_LG {
+  @media (min-width: #{$LG_SCREEN}) {
+	@content;
+  }
+}
