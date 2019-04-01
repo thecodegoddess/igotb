@@ -1,14 +1,23 @@
+// @flow
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { string, arrayOf } from 'prop-types';
 
-const Icon = (props) => {
+type IconPropTypes = {|
+  cssClass?: string,
+  height?: string,
+  icon: string[],
+  viewBox: string,
+  width?: string,
+|};
+
+const Icon = (props: IconPropTypes) => {
   const {
-    width = '100%',
+    cssClass = '',
     height = '100%',
     icon,
-    cssClass = '',
     viewBox,
+    width = '100%',
   } = props;
 
   return (

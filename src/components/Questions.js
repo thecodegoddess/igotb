@@ -1,9 +1,18 @@
+/* eslint-disable lines-between-class-members */
+// @flow
 import React, { Component } from 'react';
 import Icon from '../lib/Icon';
 import { SVGS } from '../config';
 import './Questions.css';
 
-class Questions extends Component {
+type QuestionsState = {|
+  icon: ?string[],
+  isIt2019: ?boolean,
+  isItApril: ?boolean,
+  viewBox: ?string,
+|};
+
+class Questions extends Component<{}, QuestionsState> {
   state = {
     icon: null,
     isIt2019: null,
@@ -11,7 +20,7 @@ class Questions extends Component {
     viewBox: null,
   };
 
-  handleChange = ({ target }) => {
+  handleChange = ({ target }: SyntheticInputEvent<EventTarget>): void => {
     const { value, name } = target;
 
     const newState = {
@@ -26,11 +35,12 @@ class Questions extends Component {
 
   showAnswer = () => {
     const { isIt2019, isItApril, icon, viewBox } = this.state;
-    if ((!isIt2019 && isIt2019 !== null) || (isIt2019 && isItApril !== null)) {
+
+    if (((!isIt2019 && isIt2019 !== null) || (isIt2019 && isItApril !== null)) && icon) {
       return (
         <Icon
           icon={icon}
-          viewBox={viewBox}
+          viewBox={viewBox || ''}
         />
       );
     }
@@ -41,7 +51,6 @@ class Questions extends Component {
     const {
       isIt2019,
       isItApril,
-
     } = this.state;
 
     return (

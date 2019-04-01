@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import Icon from '../lib/Icon';
 import { SVGS } from '../config';

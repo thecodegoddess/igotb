@@ -3,7 +3,11 @@
     "react-app",
     "airbnb"
   ],
+  "plugins": [
+    "flowtype"
+  ],
   "rules": {
+    "lines-between-class-members": [2],
     "react/jsx-filename-extension": [
       1,
       {
@@ -17,7 +21,7 @@
       "error",
       2
     ],
-    "react/prop-types": 0,
+    "react/prop-types": 2,
     "import/imports-first": [
       "error",
       "absolute-first"
@@ -70,13 +74,13 @@
       }
     ],
     "no-return-assign": 0,
-    "no-underscore-dangle": 0,
+    "no-underscore-dangle": 2,
     "object-curly-newline": 0,
     "sort-keys": ["error", "asc", {"caseSensitive": true, "natural": false}],
     "react/jsx-sort-props": ["error"],
     // NOTE: Temporary, remove later
     "react/no-unused-prop-types": 0,
-    "react/require-default-props": 0,
+    "react/require-default-props": 1,
     "react/require-extension": 0,
     "react/jsx-max-props-per-line": [
       2,
