@@ -24,15 +24,15 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+  from {
+    transform: rotate(0deg);
+  }
 
-
-.c-title {
-
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .c-title__paths {
-	fill: aliceblue;
+  fill: aliceblue;
 }
