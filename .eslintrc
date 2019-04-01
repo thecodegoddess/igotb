@@ -1,3 +1,98 @@
 {
-  "extends": "react-app"
+  "extends": [
+    "react-app",
+    "airbnb"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "react/prop-types": 0,
+    "import/imports-first": [
+      "error",
+      "absolute-first"
+    ],
+    "import/newline-after-import": "error",
+    "class-methods-use-this": 0,
+    "flowtype/semi": [
+      2,
+      "always"
+    ],
+    "function-paren-newline": 0,
+    "func-style": [
+      2,
+      "declaration",
+      {
+        "allowArrowFunctions": true
+      }
+    ],
+    "global-require": 0,
+    "import/default": 2,
+    "import/extensions": [
+      "error",
+      "never"
+    ],
+    "import/named": 2,
+    "import/namespace": 2,
+    "import/no-dynamic-require": 0,
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/no-named-as-default": 0,
+    "import/no-unresolved": [
+      2,
+      {
+        "caseSensitive": true
+      }
+    ],
+    "import/prefer-default-export": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/label-has-for": 0,
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": 0,
+    "no-console": 1,
+    "no-else-return": [
+      "error",
+      {
+        "allowElseIf": false
+      }
+    ],
+    "no-return-assign": 0,
+    "no-underscore-dangle": 0,
+    "object-curly-newline": 0,
+    "sort-keys": ["error", "asc", {"caseSensitive": true, "natural": false}],
+    "react/jsx-sort-props": ["error"],
+    // NOTE: Temporary, remove later
+    "react/no-unused-prop-types": 0,
+    "react/require-default-props": 0,
+    "react/require-extension": 0,
+    "react/jsx-max-props-per-line": [
+      2,
+      {
+        "maximum": 1
+      }
+    ]
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "FormData": true,
+    "FileReader": true,
+    "Blob": true,
+    "navigator": true
+  },
+  "parser": "babel-eslint"
 }
