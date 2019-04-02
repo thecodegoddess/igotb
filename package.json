@@ -32,6 +32,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "test:lint:js": "eslint --ext=js .",
     "test:lint:scss": "stylelint --config=.stylelintrc '**/*.scss'",
+    "style:fix": "stylelint --config=.stylelintrc '**/*.scss' --fix",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

@@ -6,6 +6,7 @@
   "rules": {
     "at-rule-empty-line-before": "always",
     "at-rule-no-unknown": null,
+    "block-no-empty": null,
     "scss/at-rule-no-unknown": true
   }
 
