@@ -3,6 +3,10 @@
 .c-title {
   fill: aliceblue;
 
+  @media print {
+    display: none;
+  }
+
   &__paths {
 
     @include CG_MED {

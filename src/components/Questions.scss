@@ -5,14 +5,16 @@ $_RED: darken(red, 10%);
 
 .c-questions {
   margin: 1em;
-  //margin: 2em 3em;
+
+  @media print {
+    display: none;
+  }
+
   &__year {
     fill: $_RED;
     width: 75%;
-    //width: 50%;
     margin-top: 1em;
     margin-bottom: 1em;
-    //margin: 2em auto;
   }
 
   &__options {
