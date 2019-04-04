@@ -6,8 +6,12 @@ import CHARACTERS from '../characters';
 import shuffle from '../shuffle';
 import './Bingo.css';
 
-class Bingo extends Component<{}> {
-  constructor(props: Object) {
+type BingoType = {|
+  redditFriendly: boolean,
+|}
+
+class Bingo extends Component<BingoType> {
+  constructor(props: BingoType) {
     super(props);
 
     this.rows = [];
@@ -26,7 +30,7 @@ class Bingo extends Component<{}> {
         <thead>
           <tr>
             <th colSpan="5">
-            Game of Thrones - Death Bingo
+            Game of Thrones - {this.props.redditFriendly ? 'Character' : 'Death'} Bingo
             </th>
           </tr>
         </thead>

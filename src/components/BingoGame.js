@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-one-expression-per-line */
+
 import React, { Component, Fragment } from 'react';
 import Bingo from './Bingo';
 import CHARACTERS from '../characters';
@@ -25,10 +27,12 @@ export default class BingoGame extends Component {
       inputValue: 1,
       isGenerating: false,
       numberOfCards: 1,
+      redditFriendly: true,
     };
 
     this.updateCards = this.updateCards.bind(this);
     this.reset = this.reset.bind(this);
+    this.turnOffReddit = this.turnOffReddit.bind(this);
   }
 
   inputChange = (event) => {
@@ -51,8 +55,24 @@ export default class BingoGame extends Component {
     }
   }
 
+  turnOffReddit() {
+    if (window.dataLayer && window.dataLayer.push) {
+      window.dataLayer.push({
+        action: 'turnOffReddit',
+        category: 'updateCards',
+        event: 'bingoClick',
+        label: 'generateCards',
+        value: true,
+      });
+    }
+
+    this.setState({ redditFriendly: false });
+  }
+
   updateCards() {
-    const newCardNumber = this.state.inputValue;
+    const {
+      inputValue: newCardNumber,
+    } = this.state;
 
     if (window.dataLayer && window.dataLayer.push) {
       window.dataLayer.push({
@@ -64,10 +84,11 @@ export default class BingoGame extends Component {
       });
     }
 
-    this.setState({
+    this.setState(previousState => ({
       isGenerating: true,
-      numberOfCards: newCardNumber,
-    }, () => {
+      numberOfCards: previousState.inputValue,
+    }),
+    () => {
       window.setTimeout(() => {
         this.setState({
           isGenerating: false,
@@ -81,34 +102,54 @@ export default class BingoGame extends Component {
       inputValue,
       isGenerating,
       numberOfCards,
+      redditFriendly,
     } = this.state;
 
     let numberOfCardsToDisplay = numberOfCards;
     const cardList = [];
 
-    // console.log('render');
     while (numberOfCardsToDisplay) {
-      // console.log(numnerOfCardsToDisplay);
-      // cardList.push('thing')
-      cardList.unshift(<Bingo key={numberOfCardsToDisplay} />);
+      cardList.push(<Bingo
+        key={numberOfCardsToDisplay}
+        redditFriendly={redditFriendly}
+      />);
       numberOfCardsToDisplay -= 1;
     }
     return (
       <div>
         <div className="bingo-game">
           {(() => {
+            if (!redditFriendly) {
+              return null;
+            }
+
+            return (
+              <p className="bingo-game__disclaimer">
+                this is the reddit friendly version of the game. If you would like the
+                other one, you can swap it here.
+                <button
+                  onClick={this.turnOffReddit}
+                  type="button"
+                >
+                  Turn Off Reddit Friendly
+                </button>
+              </p>
+            );
+          })()}
+          {(() => {
             if (numberOfCards > 1) {
               return null;
             }
 
             return (
-
               <Fragment>
                 <p className="bingo-game__text">
-                  With the final season upon us, the death of many characters looms in the air.
-                  So why not make a fun game out of it with Game of Thrones Death Bingo. Play along
-                  as characters you know and love as well as hate with a fiery passion are
-                  slaughtered.
+                  With the final season upon us, the {redditFriendly ? 'survival' : 'Death'} of many characters looms in
+                  the air.
+                  So why not make a fun game out of it with Game of Thrones {redditFriendly ? 'Wights' : 'Death'} Bingo.
+                  Play along
+                  as characters you know and love as well as hate with a fiery passion
+                  are {redditFriendly ? 'turned into Wights for the Night Kings army' : 'slaughtered'}.
                 </p>
                 <p className="bingo-game__text">
                   Select the number of cards you wish to generate and merely print. There are a
@@ -116,7 +157,7 @@ export default class BingoGame extends Component {
                   {' '}
                   <strong>{CHARACTERS.length}</strong>
                   {' '}
-possible characters for each
+                  possible characters for each
                   randomly generated board of
                   {' '}
                   <strong>25</strong>
@@ -141,21 +182,21 @@ possible characters for each
             onClick={this.updateCards}
             type="button"
           >
-Generate Cards
+            Generate Cards
           </button>
           <button
             id="resetCards"
             onClick={this.reset}
             type="button"
           >
-reset
+            reset
           </button>
           <button
             id="printCards"
             onClick={BingoGame.printCards}
             type="button"
           >
-print
+            print
           </button>
         </div>
         {(() => {
