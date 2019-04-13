@@ -3,6 +3,28 @@
   text-align: center;
   font-size: 1.25rem;
 
+  &__rules-toggle {
+    margin: 0 5px;
+    padding: 10px;
+    color: white;
+    background: black;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__share {
+    margin: 20px;
+
+    & > a {
+      color: cornflowerblue;
+    }
+  }
+
+  &__tags {
+    color: cornflowerblue;
+    font-weight: bold;
+  }
+
   & > label,
   & > input {
     font-size: inherit;

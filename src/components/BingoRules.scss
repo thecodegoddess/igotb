@@ -1,0 +1,35 @@
+.bingo-rules {
+  text-align: left;
+  padding: 20px;
+  background: #eaeaea;
+  margin-bottom: 20px;
+
+  ol {
+    padding-left: 25px;
+  }
+
+  li {
+    line-height: 1.5;
+    margin-bottom: 1.5em;
+  }
+
+  &__question {
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: bold;
+    //font-size: 1.25em;
+  }
+
+  &__heading {
+    font-size: 1.25rem;
+    margin-top: 0;
+  }
+
+  &__sm {
+
+  }
+
+  &__tags {
+
+  }
+}

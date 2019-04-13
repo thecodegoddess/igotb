@@ -2,6 +2,7 @@
 
 import React, { Component, Fragment } from 'react';
 import Bingo from './Bingo';
+import BingoRules from './Bingo-Rules';
 import CHARACTERS from '../characters';
 import './BingoGame.css';
 
@@ -28,11 +29,13 @@ export default class BingoGame extends Component {
       isGenerating: false,
       numberOfCards: 1,
       redditFriendly: true,
+      showRules: false,
     };
 
     this.updateCards = this.updateCards.bind(this);
     this.reset = this.reset.bind(this);
     this.turnOffReddit = this.turnOffReddit.bind(this);
+    this.toggleRules = this.toggleRules.bind(this);
   }
 
   inputChange = (event) => {
@@ -69,6 +72,21 @@ export default class BingoGame extends Component {
     this.setState({ redditFriendly: false });
   }
 
+  toggleRules() {
+    const { showRules } = this.state;
+    if (window.dataLayer && window.dataLayer.push) {
+      window.dataLayer.push({
+        action: 'toggleRulesClick',
+        category: 'updateCards',
+        event: 'bingoClick',
+        label: 'showRules',
+        value: showRules,
+      });
+    }
+
+    this.setState({ showRules: !showRules });
+  }
+
   updateCards() {
     const {
       inputValue: newCardNumber,
@@ -103,6 +121,7 @@ export default class BingoGame extends Component {
       isGenerating,
       numberOfCards,
       redditFriendly,
+      showRules,
     } = this.state;
 
     let numberOfCardsToDisplay = numberOfCards;
@@ -117,7 +136,14 @@ export default class BingoGame extends Component {
     }
     return (
       <div>
+
         <div className="bingo-game">
+          <a className="twitter-share-button"
+            data-hashtags="got, GoTDeathBingo, GoTCharacterBingo"
+            data-text="I just generated my Games of Thrones Character Bingo and you can too."
+            href="https://twitter.com/intent/tweet"
+            data-size="large">
+            Tweet</a>
           {(() => {
             if (!redditFriendly) {
               return null;
@@ -165,6 +191,23 @@ export default class BingoGame extends Component {
               </Fragment>
             );
           })()}
+
+          {(() => {
+            if (!showRules) {
+              return null;
+            }
+
+            return (
+              <BingoRules />
+            );
+          })()}
+          <span
+            className="bingo-game__rules-toggle"
+            onClick={this.toggleRules}
+          >
+            Toggle Rules
+          </span>
+
           <label htmlFor="numberTracker">
             Number of Cards
           </label>
@@ -198,7 +241,9 @@ export default class BingoGame extends Component {
           >
             print
           </button>
+          <p className="bingo-game__share">Share your bingo cards on social media <span className="bingo-game__tags">#GoTDeathBingo</span> and feel free to tag me <a href="https://twitter.com/thecodegoddess">@thecodegoddess</a>.</p>
         </div>
+
         {(() => {
           if (isGenerating) {
             return (
