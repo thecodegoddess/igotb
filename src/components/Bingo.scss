@@ -1,0 +1,67 @@
+@import "../scss/utils";
+$DIM_BOX: 20vw;
+
+.bingo {
+  border-spacing: 0;
+  border-collapse: collapse;
+  margin: 20px auto 50px;
+  font-family: "game_of_thronesregular", serif;
+  break-after: page;
+  page-break-after: always;
+  table-layout: fixed;
+
+  th {
+    font-size: 1.25rem;
+    padding-bottom: 20px;
+
+    @include CG_MED {
+      font-size: 1.75rem;
+    }
+  }
+
+  & td {
+    border: 2px solid #0b0b0b;
+    text-align: center;
+    width: $DIM_BOX;
+    height: $DIM_BOX;
+    background: no-repeat center;
+    background-size: 50%;
+    position: relative;
+
+    @media print {
+      width: 150px;
+      height: 150px;
+    }
+
+    & img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+      opacity: 0.5;
+      max-width: 55%;
+
+      @media print {
+        opacity: 0.25;
+      }
+    }
+  }
+
+  &__name {
+    font-size: 0.5rem;
+    line-height: 1.5em;
+    text-shadow:
+      0 0 2px #d5c5c5,
+      0 0 4px #f4eaea,
+      0 0 8px #fff;
+
+    @include CG_MED {
+      font-size: 1rem;
+    }
+
+    @media print {
+      font-size: 16px;
+    }
+  }
+}

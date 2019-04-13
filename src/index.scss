@@ -1,5 +1,33 @@
+@import "./scss/utils";
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Georgia", serif;
+}
+
+:root {
+  font-size: 10px;
+
+  @include CG_MED {
+    font-size: 16px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'game_of_thronesregular';
+  src:
+    url('assets/fonts/game_of_thrones-webfont.woff2') format('woff2'),
+    url('assets/fonts/game_of_thrones-webfont.woff') format('woff'),
+    url('assets/fonts/game_of_thrones-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@page {
+  margin: 20px;
 }
